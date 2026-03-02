@@ -39,9 +39,9 @@ class CalculadoraTest {
         -b=3
     Pasos a ejecutar:
         1° Asignar los valores a las variables a y b
-        1° Asignar a reslut lo que retorna calulcadora.suma
-            1.1 Colocar el valor de a como primer parametro.
-            1.2 Colocar el valor de b como segundo parametro.
+        2° Asignar a reslut lo que retorna calulcadora.suma
+            2.1 Colocar el valor de a como primer parametro.
+            2.2 Colocar el valor de b como segundo parametro.
     Resultado esperado:
         result=8
      */
@@ -216,39 +216,63 @@ class CalculadoraTest {
 
     // 3. División por cero (ej. numerador=10, denominador=0 -> debe lanzar IllegalArgumentException)
      /*
-    ID: CP_CALCULADORA_006
-    Titulo: Divicion con decimales
+    ID: CP_CALCULADORA_007
+    Titulo: Divicion con cero
     Prioridad: Alta
     Precondiciones:
         -Instancia de calculadora iniciada.
         -Variabes a,b y result estan inicializadas en 0
     Datos de prueba:
-        -numerador=5
-        -denominador=2
+        -numerador=10
+        -denominador=0
     Pasos a ejecutar:
         1° Asignar los valores a las variables numerador y denominador
         2° Asignar a reslut lo que retorna calulcadora.division
             2.1 Colocar el valor de numerador como primer parametro.
             2.2 Colocar el valor de b denominador segundo parametro.
     Resultado esperado:
-        result=2.5
+        result=IllegalArgumentException("El denominador no puede ser cero");
      */
     @Test
     public void divicionCero(){
-        /*
-        try {
+
             numerador = 10;
             denominador = 0;
-
-            resultado = calculadoraDivision.dividir(numerador, denominador);
-        }catch 
-        System.out.println(resultado);
-        assertThrows(new IllegalArgumentException("El denominador no puede ser cero",);
-        */
+        try {
+            calculadoraDivision.dividir(numerador, denominador);
+            fail("Debería haber lanzado IllegalArgumentException y no lo hizo");
+        } catch (IllegalArgumentException e) {
+            assertEquals("El denominador no puede ser cero", e.getMessage());
+        }
     }
 
 
     // 4. Numerador cero (ej. numerador=0, denominador=5 -> 0.0)
+     /*
+    ID: CP_CALCULADORA_008
+    Titulo: Divicion con numerador en 0
+    Prioridad: Alta
+    Precondiciones:
+        -Instancia de calculadora iniciada.
+        -Variabes a,b y result estan inicializadas en 0
+    Datos de prueba:
+        -numerador=0
+        -denominador=5
+    Pasos a ejecutar:
+        1° Asignar los valores a las variables numerador y denominador
+        2° Asignar a reslut lo que retorna calulcadora.division
+            2.1 Colocar el valor de numerador como primer parametro.
+            2.2 Colocar el valor de b denominador segundo parametro.
+    Resultado esperado:
+        result=0.0
+     */
+    @Test
+    public void divicionNumeradorCero(){
+        numerador= 0;
+        denominador=5;
+        resultado=calculadoraDivision.dividir(numerador,denominador);
 
+        assertEquals(0.0,resultado);
+    }
 
 }

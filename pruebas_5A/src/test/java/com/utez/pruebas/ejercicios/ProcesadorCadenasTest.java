@@ -279,7 +279,7 @@ class ProcesadorCadenasTest {
         1° Asignar a reslutado lo que retorna ProcesadorCadenas.esPalindromo
             1.1 Colocar el valor de texto como primer parametro.
     Resultado esperado:
-        resultado=true
+        resultado=false
      */
     @Test
     public void verificarPalindromoCadenaNull() {
