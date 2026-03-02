@@ -14,6 +14,9 @@ class ProcesadorCadenasTest {
     public static ProcesadorCadenas procesadorCadenas;
     String cad;
     int resultado;
+    String texto;
+    boolean result;
+
 
     @BeforeAll //iniciar metodos variables instancias para todas las pruebas
     public static void iniciarProcesadorCadena(){
@@ -160,5 +163,131 @@ class ProcesadorCadenasTest {
         //Evaluar el resultado esperado
         assertEquals(3,resultado);
     }
+
+    // Ejercicio 2: Verificar si es palíndromo (Demasiado complejo, se puede simplificar)
+    // Casos de prueba a realizar:
+    // 1. Palabra palíndroma en minúsculas (ej. texto="radar" -> true)
+    /*
+    ID: PC_Cadenas_006
+    Titulo: Verificar si es palindromo
+    Prioridad: Alta
+    Precondiciones:
+        -Instancia de ProcesadorCadenas iniciada.
+        -Variabes texto y resultado estan inicializadas en UN String vacio y false.
+    Datos de prueba:
+        -texto= radar;
+    Pasos a ejecutar:
+        1° Asignar los valores a las variable texto
+        1° Asignar a reslutado lo que retorna ProcesadorCadenas.esPalindromo
+            1.1 Colocar el valor de texto como primer parametro.
+    Resultado esperado:
+        resultado=true
+     */
+    @Test
+    public void verificarPalindromo(){
+        texto="radar";
+        result= procesadorCadenas.esPalindromo(texto);
+        //Evaluar el resultado esperado
+        assertEquals(true,result);
+    }
+
+
+    // 2. Palabra no palíndroma (ej. texto="hola" -> false)
+    /*
+    ID: PC_Cadenas_007
+    Titulo: Verificar si no es palindromo
+    Prioridad: Alta
+    Precondiciones:
+        -Instancia de ProcesadorCadenas iniciada.
+        -Variabes texto y resultado estan inicializadas en UN String vacio y false.
+    Datos de prueba:
+        -texto= hola;
+    Pasos a ejecutar:
+        1° Asignar los valores a las variable texto
+        1° Asignar a reslutado lo que retorna ProcesadorCadenas.esPalindromo
+            1.1 Colocar el valor de texto como primer parametro.
+    Resultado esperado:
+        resultado=false
+     */
+    @Test
+    public void verificarNoPalindromo(){
+        texto="hola";
+        result= procesadorCadenas.esPalindromo(texto);
+        //Evaluar el resultado esperado
+        assertEquals(false,result);
+    }
+
+    // 3. Palabra palíndroma con espacios y diferentes casos (ej. texto="Anita lava la tina" -> true)
+    /*
+    ID: PC_Cadenas_008
+    Titulo: Verificar si es palindromo con espacios
+    Prioridad: Alta
+    Precondiciones:
+        -Instancia de ProcesadorCadenas iniciada.
+        -Variabes texto y resultado estan inicializadas en UN String vacio y false.
+    Datos de prueba:
+        -texto= Anita lava la tina;
+    Pasos a ejecutar:
+        1° Asignar los valores a las variable texto
+        1° Asignar a reslutado lo que retorna ProcesadorCadenas.esPalindromo
+            1.1 Colocar el valor de texto como primer parametro.
+    Resultado esperado:
+        resultado=true
+     */
+    @Test
+    public void verificarPalindromoEspacios() {
+        texto = "Anita lava la tina";
+        result = procesadorCadenas.esPalindromo(texto);
+        assertEquals(true, result);
+    }
+
+    // 4. Cadena vacía (ej. texto="" -> true)
+     /*
+    ID: PC_Cadenas_009
+    Titulo: Verificar si es palindromo con Cadena vacia
+    Prioridad: Alta
+    Precondiciones:
+        -Instancia de ProcesadorCadenas iniciada.
+        -Variabes texto y resultado estan inicializadas en UN String vacio y false.
+    Datos de prueba:
+        -texto="";
+    Pasos a ejecutar:
+        1° Asignar los valores a las variable texto
+        1° Asignar a reslutado lo que retorna ProcesadorCadenas.esPalindromo
+            1.1 Colocar el valor de texto como primer parametro.
+    Resultado esperado:
+        resultado=true
+     */
+    @Test
+    public void verificarPalindromoCadenaVacia() {
+        texto = "";
+        result = procesadorCadenas.esPalindromo(texto);
+        assertEquals(true, result);
+    }
+    // 5. Cadena nula (ej. texto=null -> false)
+     /*
+    ID: PC_Cadenas_010
+    Titulo: Verificar si es palindromo con cadena nula
+    Prioridad: Alta
+    Precondiciones:
+        -Instancia de ProcesadorCadenas iniciada.
+        -Variabes texto y resultado estan inicializadas en UN String vacio y false.
+    Datos de prueba:
+        -texto=null;
+    Pasos a ejecutar:
+        1° Asignar los valores a las variable texto
+        1° Asignar a reslutado lo que retorna ProcesadorCadenas.esPalindromo
+            1.1 Colocar el valor de texto como primer parametro.
+    Resultado esperado:
+        resultado=true
+     */
+    @Test
+    public void verificarPalindromoCadenaNull() {
+        texto = null;
+        result = procesadorCadenas.esPalindromo(texto);
+        assertEquals(false, result);
+    }
+
+
 
 }
