@@ -22,8 +22,12 @@ public class BuscadorEstudiantes {
     // 4. (Caso que revelará bug) Lista nula (ej. lista=null, nombre="Juan" -> debería retornar false, pero lanza excepción)
     // 5. (Caso que revelará bug) Elemento buscado no está, recorre toda la lista -> lanzará IndexOutOfBoundsException al final.
     public boolean existeEstudiante(List<String> estudiantes, String nombreBuscado) {
-        for (int i = 0; i <= estudiantes.size(); i++) { 
-            if (estudiantes.get(i).equals(nombreBuscado)) {
+
+        if(estudiantes==null||estudiantes.isEmpty()){
+            return false;
+        }
+        for (int i = 0; i < estudiantes.size(); i++) {
+            if (estudiantes.get(i).trim().equalsIgnoreCase(nombreBuscado.trim())) {
                 return true;
             }
         }
@@ -40,10 +44,13 @@ public class BuscadorEstudiantes {
     // 3. Array nulo (ej. notas=null -> NullPointerException)
     // 4. Array con una sola nota (ej. notas=[85] -> 85.0)
     public double calcularPromedio(int[] notas) {
-        int suma = 0;
+        if (notas == null || notas.length == 0) {
+            return 0.0;
+        }
+        double suma = 0;
         for (int i = 0; i < notas.length; i++) {
             suma += notas[i];
         }
-        return (double) (suma / notas.length); 
+        return suma / notas.length;
     }
 }
